@@ -1,0 +1,16 @@
+---
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getSortedPosts } from "../utils/content-utils";
+import Map from "@components/map.tsx";
+const sortedPosts = await getSortedPosts();
+---
+
+<MainGridLayout title={i18n(I18nKey.map)}>
+<div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative" style="min-height: 80vh">
+        <div class="card-base z-10 px-9 py-6 relative w-full">
+            <Map posts={sortedPosts} client:only="react" > 
+        </div>
+</div>
+</MainGridLayout>
